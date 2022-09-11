@@ -1,0 +1,48 @@
+.models {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.models .models-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 40px 94px;
+}
+
+.models .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.models .header p {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #000;
+  margin-right: 25px;
+  position: relative;
+}
+
+.models .header p::after {
+  content: ">";
+  position: absolute;
+  top: 0;
+  right: -15px;
+}
+
+.models .header p:last-child::after {
+  content: "";
+}
+.models h1 {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 63px;
+}
+.modes .cars {
+  padding-top: 48px;
+}

@@ -1,0 +1,9 @@
+.error-boundy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-size: 24px;
+  font-weight: 700;
+}

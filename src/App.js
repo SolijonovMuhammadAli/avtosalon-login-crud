@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { store } from "./states/store";
+import { loading } from "./components/Loading/Loading";
+
+const ErrorBoundry = lazy(() => import("./components/ErrorBoundry"));
+const RouterApp = lazy(() => import("./RouterApp"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={loading}>
+      <Provider store={store}>
+        <ErrorBoundry>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<RouterApp />} />
+            </Routes>
+          </BrowserRouter>
+        </ErrorBoundry>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </Provider>
+    </Suspense>
   );
 }
 

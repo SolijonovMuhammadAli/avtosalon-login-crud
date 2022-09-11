@@ -1,0 +1,65 @@
+#main {
+  background: #fcfcfc;
+  border-radius: 8px;
+  padding: 12px;
+}
+#main > div.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  position: relative;
+}
+
+#main > div.main-header::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 16px;
+  background: #ffd88d;
+  border-radius: 4px;
+}
+
+#main > div h4 {
+  margin-left: 32px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: #1a1d1f;
+}
+
+#main table {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+#main table thead {
+  padding-bottom: 32px;
+}
+#main table tr {
+  border-bottom: 1px solid #efefef;
+}
+
+#main table tr td,
+#main table tr th {
+  padding: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+}
+
+#main table tr td {
+  font-size: 15px;
+  line-height: 24px;
+  color: #1a1d1f;
+}
+
+#main table tr th {
+  font-size: 13px;
+  line-height: 16px;
+  color: #6f767e;
+}

@@ -1,0 +1,22 @@
+#degree-car {
+  padding: 0 12px;
+}
+#degree-car p {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+}
+#degree-car .type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#degree-car .type label {
+  width: 100px;
+}

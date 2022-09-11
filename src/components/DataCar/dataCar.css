@@ -1,0 +1,38 @@
+#data-car {
+  background: #f6f6f6;
+  border-radius: 8px;
+  padding: 16px;
+  width: 396px;
+}
+
+#data-car h2 {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+#data-car > div {
+  padding: 4px;
+}
+#data-car > div:first-child {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #000000;
+}
+
+#data-car > div:last-child {
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: end;
+}
+
+#data-car > div img {
+  height: 160px;
+}

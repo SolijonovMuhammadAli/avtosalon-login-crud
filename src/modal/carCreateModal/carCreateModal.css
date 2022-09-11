@@ -1,0 +1,43 @@
+#car-create-modal form .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#car-create-modal form .wrapper > div {
+  width: 50%;
+  padding: 16px;
+}
+.css-b62m3t-container {
+  margin: 8px 0;
+}
+
+#car-create-modal form .wrapper > div .form-group {
+  padding: 8px 0;
+}
+
+#car-create-modal form .wrapper > div label {
+  display: block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #33383f;
+}
+
+#car-create-modal form .wrapper > div .form-group input {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+  width: 100%;
+}
+
+#car-create-modal form textarea {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+  width: 100%;
+}
