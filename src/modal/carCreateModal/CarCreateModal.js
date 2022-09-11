@@ -26,7 +26,6 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
     e.preventDefault();
     const newdata = new FormData(e.target);
     newdata.append("categoryId", categoryId);
-
     const data = [...newdata];
     let obj = {};
     for (let [key, value] of data) {

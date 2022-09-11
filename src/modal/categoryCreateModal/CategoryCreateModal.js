@@ -10,8 +10,10 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
   const handleOk = e => {
     e.preventDefault();
     const newdata = new FormData(e.target);
+
     postCategory(newdata);
     toast.success("Success");
+
     setIsModalOpen(false);
   };
 
