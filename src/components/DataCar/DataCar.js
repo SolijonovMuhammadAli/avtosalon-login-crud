@@ -3,7 +3,6 @@ import { MEAN_API } from "../../config/api";
 import "./dataCar.css";
 
 function DataCar({ car }) {
-  console.log(car);
   return (
     <div id="data-car">
       <h2>{car.marka.name}</h2>

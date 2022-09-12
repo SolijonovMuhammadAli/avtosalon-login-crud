@@ -50,14 +50,11 @@ export const carSlice = apiSlice.injectEndpoints({
       providesTags: [CAR_TAG],
     }),
     postCar: builder.mutation({
-      query: car => {
-        console.log(car);
-        return {
-          url: CAR_CREATE,
-          method: "POST",
-          body: car,
-        };
-      },
+      query: car => ({
+        url: CAR_CREATE,
+        method: "POST",
+        body: car,
+      }),
       invalidatesTags: [CAR_TAG],
     }),
     deleteCar: builder.mutation({

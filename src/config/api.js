@@ -27,7 +27,7 @@ const CAR_API = {
   CAR_CREATE: "/car",
   CAR_UPDATE: "/car",
   CAR_GET_BY_ID: id => `/car/${id}`,
-  CAR_DELETE: id => `car/${id}`,
+  CAR_DELETE: id => `/car/${id}`,
 };
 
 export {

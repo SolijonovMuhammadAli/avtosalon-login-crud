@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "antd";
+import { useUploadFile } from "./../../hooks/useUploadFile";
 import Select from "react-select";
 import { useGetCategoyQuery } from "../../states/categorySlice/categorySlice";
 import { usePostCarMutation } from "../../states/carSlice/carSlice";
@@ -7,10 +8,36 @@ import "./carCreateModal.css";
 import { toast } from "react-toastify";
 
 const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
+  const [image, setUplaod] = useUploadFile();
   const [categoryId, setCategoyId] = useState("");
   const [optionsModel, setOptionsModel] = useState([{ value: "", label: "" }]);
+  const [objFile, setObjFile] = useState({});
+  const [nameFile, setNameFile] = useState("");
   const { data } = useGetCategoyQuery({ limit: 100, page: 1 });
   const [postCar] = usePostCarMutation();
+
+  const handleOk = e => {
+    e.preventDefault();
+    const newdata = new FormData(e.target);
+    newdata.append("categoryId", categoryId);
+
+    let obj = {};
+    for (let [key, value] of newdata) {
+      obj = { ...obj, [key]: value };
+      if ((key === "price") | (key === "year")) {
+        obj[key] = Number(value);
+      }
+    }
+    postCar({ ...obj, ...objFile });
+    toast.success("Success");
+    setIsModalOpen(false);
+  };
+  const handleChange = e => {
+    const newData = new FormData();
+    newData.append("file", e.target.files[0]);
+    setUplaod(newData);
+    setNameFile(e.target.name);
+  };
 
   useEffect(() => {
     if (data)
@@ -22,23 +49,10 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
       );
   }, [data]);
 
-  const handleOk = e => {
-    e.preventDefault();
-    const newdata = new FormData(e.target);
-    newdata.append("categoryId", categoryId);
-    const data = [...newdata];
-    let obj = {};
-    for (let [key, value] of data) {
-      obj = { ...obj, [key]: value };
-      if ((key === "price") | (key === "year")) {
-        obj[key] = Number(value);
-      }
-    }
-    postCar(obj);
-    toast.success("Success");
-    setIsModalOpen(false);
-  };
-
+  useEffect(() => {
+    setObjFile({ ...objFile, [nameFile]: image.data });
+    //eslint-disable-next-line
+  }, [nameFile, image]);
   return (
     <Modal
       width={"90%"}
@@ -96,6 +110,7 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
                   className="from-control"
                   id="rasm_360_ichki"
                   placeholder="Yuklash"
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-group">
@@ -156,6 +171,7 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
                   className="from-control"
                   id="rasm_360_tashqi"
                   placeholder="Yuklash"
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-group">
@@ -166,6 +182,7 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
                   className="from-control"
                   id="rasm_360"
                   placeholder="Yuklash"
+                  onChange={handleChange}
                 />
               </div>
             </div>

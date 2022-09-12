@@ -1,20 +1,38 @@
 import React from "react";
 import { Modal } from "antd";
 import { toast } from "react-toastify";
+import { useUploadFile } from "../../hooks/useUploadFile";
 import { usePostCategoryMutation } from "../../states/categorySlice/categorySlice";
 import "./categoryCreateModal.css";
 
 const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
   const [postCategory] = usePostCategoryMutation();
-
+  const [image, uploadFile] = useUploadFile();
   const handleOk = e => {
     e.preventDefault();
-    const newdata = new FormData(e.target);
-
-    postCategory(newdata);
+    const newData = new FormData(e.target);
+    let data = {};
+    for (let [key, value] of newData) {
+      data = {
+        ...data,
+        [key]: value,
+      };
+      if (key === "imgUrl") {
+        data = {
+          ...data,
+          [key]: image.data,
+        };
+      }
+    }
+    postCategory(data);
     toast.success("Success");
-
     setIsModalOpen(false);
+  };
+
+  const handleChange = e => {
+    const newData = new FormData();
+    newData.append("file", e.target.files[0]);
+    uploadFile(newData);
   };
 
   return (
@@ -49,6 +67,7 @@ const CarCreateModal = ({ isModalOpen, setIsModalOpen }) => {
                   className="from-control"
                   id="rasm_360"
                   placeholder="Yuklash"
+                  onChange={handleChange}
                 />
               </div>
             </div>
